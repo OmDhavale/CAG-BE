@@ -25,6 +25,11 @@ const Home = () => {
         Login as Teacher
       </a>
     </button>
+    <button style={styles.button}>
+      < a href='adminlogin' style={styles.a}>
+        Login as Admin
+      </a>
+    </button>
     </div>
   </div>
   <footer style={styles.footer}>

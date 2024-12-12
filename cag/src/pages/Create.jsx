@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,31 +6,31 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 
-const Studentlogin = () => {
-//Java script functions
-  const[loginInfo,setLoginInfo] = useState({
+const Create = () => {
+    //Java script functions
+  const[addInfo,setaddInfo] = useState({
     email: '',
     regno: ''
   })
   const handleChange = (e)=>{
     const {name,value} = e.target;
     console.log(name,value)
-    const copyLoginInfo = {...loginInfo}
-    copyLoginInfo[name] = value
-    setLoginInfo(copyLoginInfo)
+    const copyaddInfo = {...addInfo}
+    copyaddInfo[name] = value
+    setaddInfo(copyaddInfo)
 
   }
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    console.log(loginInfo)
-    const email = loginInfo.email;
-    const regno = loginInfo.regno;
-    axios.post('http://localhost:4444/studlogin',{email,regno})
+    console.log(addInfo)
+    const email = addInfo.email;
+    const regno = addInfo.regno;
+    axios.post('http://localhost:4444/adduser',{email,regno})
     .then(result=>{
       console.log(result);
       
-      if(result.data.message==="User logged in succesful !"){ //give this message in json resp 
-        toast.success("Student Login succesful !",{
+      if(result.data.message==="Student created"){ //give this message in json resp 
+        toast.success("User added succesful !",{
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -39,9 +39,6 @@ const Studentlogin = () => {
           draggable: true,
           progress: undefined,
         })
-        // setTimeout(() => {
-        //   navigate('/home')
-        // }, 5000);
       }
     })
     .catch(err=>{
@@ -60,6 +57,57 @@ const Studentlogin = () => {
     
    }
 
+   //for teacher
+   const[addInfoT,setaddInfoT] = useState({
+    email: '',
+    regno: '',
+    subject: ''
+  })
+   const handleChangeT = (e)=>{
+    const {name,value} = e.target;
+    console.log(name,value)
+    const copyaddInfoT = {...addInfoT}
+    copyaddInfoT[name] = value
+    setaddInfoT(copyaddInfoT)
+
+  }
+  const handleSubmitT = async (e)=>{
+    e.preventDefault();
+    console.log(addInfoT)
+    const email = addInfoT.email;
+    const regno = addInfoT.regno;
+    const subject = addInfoT.subject;
+    axios.post('http://localhost:4444/addteacher',{email,regno,subject})
+    .then(result=>{
+      console.log(result);
+      
+      if(result.data.message==="teacher created"){ //give this message in json resp 
+        toast.success("Teacher added succesful !",{
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      }
+    })
+    .catch(err=>{
+      console.log(err.response.data)
+      //for showing pop up of error on page
+      toast.error("ERROR SENDING POST REQ.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+    })
+    
+   }
   return (
     <>
     <div style={styles.header}>
@@ -71,18 +119,17 @@ const Studentlogin = () => {
     Welcome to
     <div style={styles.main}>Class At a Glance</div>
   </div> */}
-  
   <div className ='form-container'>
     <div className='form'>
 
-            <h2>Student Login</h2>
+            <h2>Create Student</h2>
               <input 
                 type='name'
                 name='email'
                 placeholder='Email'
                 onChange={handleChange}
                 autoFocus
-                value={loginInfo.userID}
+                value={addInfo.email}
               />
               <input 
                 type='name'
@@ -90,17 +137,48 @@ const Studentlogin = () => {
                 placeholder='Registration No.'
                 onChange={handleChange}
                 autoFocus
-                value={loginInfo.password}
+                value={addInfo.regno}
               />
-              {/* <button type='submit'onClick={handleSubmit}>LogIn</button> */}
-              <button type='submit'onClick={handleSubmit}>LogIn</button>
-              {/* <p>Not a member ?<Link to="/signup"> Sign up</Link> </p>
+              {/* <button type='submit'onClick={handleSubmit}>add</button> */}
+              <button type='submit'onClick={handleSubmit}>add</button>
+
+              <h2>Create Teacher</h2>
+              <input 
+                type='name'
+                name='email'
+                placeholder='Email'
+                onChange={handleChangeT}
+                autoFocus
+                value={addInfoT.email}
+              />
+              <input 
+                type='name'
+                name='regno'
+                placeholder='Registration No.'
+                onChange={handleChangeT}
+                autoFocus
+                value={addInfoT.regno}
+              />
+              <input 
+                type='name'
+                name='subject'
+                placeholder='Subject'
+                onChange={handleChangeT}
+                autoFocus
+                value={addInfoT.subject}
+              />
+              {/* <button type='submit'onClick={handleSubmit}>add</button> */}
+              <button type='submit'onClick={handleSubmitT}>add</button>
+              {/* <p>Not a member ?<Link to="/add"> Sign up</Link> </p>
               <ToastContainer/> */}
+               
           </div>
+          
       </div>
   <footer style={styles.footer}>
     <p>Project by ProCoderzz</p>
   </footer>
+  
 </div>
 </>
   )
@@ -152,27 +230,27 @@ const styles = {
     boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.553)"
   },
   main1: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "20vh",
-    textAlign: "center",
-    margin: "0px auto",
-    padding: "0px",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // height: "20vh",
+    // textAlign: "center",
+    // margin: "0px auto",
+    // padding: "0px",
     color: "#ff6f00",
     fontSize: "100%"
   },
   main: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "20vh",
-    bottom: "50%",
-    textAlign: "center",
-    margin: "0px auto",
-    padding: "30px",
+    //display: "flex",
+    //flexDirection: "column",
+    //justifyContent: "center",
+    //alignItems: "center",
+    //height: "20vh",
+    ///bottom: "50%",
+    //textAlign: "center",
+    //margin: "0px auto",
+    //padding: "30px",
     color: "#ff6f00",
     fontSize: "300%",
     fontFamily: "Impact"
@@ -203,4 +281,4 @@ const styles = {
     fontWeight: "bold"
   }
 }
-export default Studentlogin
+export default Create

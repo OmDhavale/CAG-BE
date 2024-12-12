@@ -5,6 +5,8 @@ import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Studentlogin from './pages/Studentlogin';
 import Teacherlogin from './pages/Teacherlogin';
+import Adminlogin from './pages/Adminlogin';
+import Create from './pages/Create';
 import Flr1 from './pages/layouts/Flr1';
 import Flr2 from './pages/layouts/Flr2';
 import Flr3 from './pages/layouts/Flr3';
@@ -20,6 +22,8 @@ function App() {
         <Route path='/studentlogin' element={<Studentlogin/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/teacherlogin' element={<Teacherlogin/>}/>
+        <Route path='/adminlogin' element={<Adminlogin/>}/>
+        <Route path='/create' element={<Create/>}/>
         <Route path='/flr1' element={<Flr1/>}/>
         <Route path='/flr2' element={<Flr2/>}/>
         <Route path='/flr3' element={<Flr3/>}/>

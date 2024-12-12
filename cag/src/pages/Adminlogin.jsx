@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,8 +6,10 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 
-const Studentlogin = () => {
-//Java script functions
+const Adminlogin = () => {
+
+  const navigate = useNavigate();
+    //Java script functions
   const[loginInfo,setLoginInfo] = useState({
     email: '',
     regno: ''
@@ -25,12 +27,12 @@ const Studentlogin = () => {
     console.log(loginInfo)
     const email = loginInfo.email;
     const regno = loginInfo.regno;
-    axios.post('http://localhost:4444/studlogin',{email,regno})
+    axios.post('http://localhost:4444/adminlogin',{email,regno})
     .then(result=>{
       console.log(result);
       
-      if(result.data.message==="User logged in succesful !"){ //give this message in json resp 
-        toast.success("Student Login succesful !",{
+      if(result.data.message==="Admin logged in succesful !"){ //give this message in json resp 
+        toast.success("Login succesful !",{
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -39,9 +41,9 @@ const Studentlogin = () => {
           draggable: true,
           progress: undefined,
         })
-        // setTimeout(() => {
-        //   navigate('/home')
-        // }, 5000);
+        setTimeout(() => {
+            navigate('/create')
+          }, 5000);
       }
     })
     .catch(err=>{
@@ -59,7 +61,6 @@ const Studentlogin = () => {
     })
     
    }
-
   return (
     <>
     <div style={styles.header}>
@@ -71,18 +72,17 @@ const Studentlogin = () => {
     Welcome to
     <div style={styles.main}>Class At a Glance</div>
   </div> */}
-  
   <div className ='form-container'>
     <div className='form'>
 
-            <h2>Student Login</h2>
+            <h2>Admin Login</h2>
               <input 
                 type='name'
                 name='email'
                 placeholder='Email'
                 onChange={handleChange}
                 autoFocus
-                value={loginInfo.userID}
+                value={loginInfo.email}
               />
               <input 
                 type='name'
@@ -90,17 +90,20 @@ const Studentlogin = () => {
                 placeholder='Registration No.'
                 onChange={handleChange}
                 autoFocus
-                value={loginInfo.password}
+                value={loginInfo.regno}
               />
               {/* <button type='submit'onClick={handleSubmit}>LogIn</button> */}
               <button type='submit'onClick={handleSubmit}>LogIn</button>
               {/* <p>Not a member ?<Link to="/signup"> Sign up</Link> </p>
               <ToastContainer/> */}
+               
           </div>
+          
       </div>
   <footer style={styles.footer}>
     <p>Project by ProCoderzz</p>
   </footer>
+  
 </div>
 </>
   )
@@ -152,27 +155,27 @@ const styles = {
     boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.553)"
   },
   main1: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "20vh",
-    textAlign: "center",
-    margin: "0px auto",
-    padding: "0px",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // height: "20vh",
+    // textAlign: "center",
+    // margin: "0px auto",
+    // padding: "0px",
     color: "#ff6f00",
     fontSize: "100%"
   },
   main: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "20vh",
-    bottom: "50%",
-    textAlign: "center",
-    margin: "0px auto",
-    padding: "30px",
+    //display: "flex",
+    //flexDirection: "column",
+    //justifyContent: "center",
+    //alignItems: "center",
+    //height: "20vh",
+    ///bottom: "50%",
+    //textAlign: "center",
+    //margin: "0px auto",
+    //padding: "30px",
     color: "#ff6f00",
     fontSize: "300%",
     fontFamily: "Impact"
@@ -203,4 +206,4 @@ const styles = {
     fontWeight: "bold"
   }
 }
-export default Studentlogin
+export default Adminlogin

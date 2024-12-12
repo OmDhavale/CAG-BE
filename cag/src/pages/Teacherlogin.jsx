@@ -25,38 +25,38 @@ const Teacherlogin = () => {
     console.log(loginInfo)
     const email = loginInfo.email;
     const regno = loginInfo.regno;
-    // axios.post('http://localhost:4444/signin'<-put here our teacher login API,{email,regno})
-//     .then(result=>{
-//       console.log(result);
+    axios.post('http://localhost:4444/teachlogin',{email,regno})
+    .then(result=>{
+      console.log(result);
       
-//       if(result.data.message==="User logged in succesful !"){ //give this message in json resp 
-//         toast.success("Login succesful !",{
-//           position: "top-right",
-//           autoClose: 5000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//         })
-//         setTimeout(() => {
-//           navigate('/home')
-//         }, 5000);
-//       }
-//     })
-//     .catch(err=>{
-//       console.log(err.response.data)
-//       //for showing pop up of error on page
-//       toast.error("ERROR SENDING POST REQ.", {
-//       position: "top-right",
-//       autoClose: 5000,
-//       hideProgressBar: false,
-//       closeOnClick: true,
-//       pauseOnHover: true,
-//       draggable: true,
-//       progress: undefined,
-//       })
-//     })
+      if(result.data.message==="Teacher logged in succesful !"){ //give this message in json resp 
+        toast.success("Teacher Login succesful !",{
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+        // setTimeout(() => {
+        //   navigate('/home')
+        // }, 5000);
+      }
+    })
+    .catch(err=>{
+      console.log(err.response.data)
+      //for showing pop up of error on page
+      toast.error("ERROR SENDING POST REQ.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+    })
     
    }
   return (
@@ -64,6 +64,7 @@ const Teacherlogin = () => {
     <div style={styles.header}>
   <h1>Shah & Anchor Kutchhi Engg College</h1>
  </div>
+ <ToastContainer/>
  <div style={styles['.hero']}>
   {/* <div style={styles.main1}>
     Welcome to
@@ -77,20 +78,20 @@ const Teacherlogin = () => {
                 type='name'
                 name='email'
                 placeholder='Email'
-                //onChange={handleChange}
+                onChange={handleChange}
                 autoFocus
-                //value={loginInfo.userID}
+                value={loginInfo.userID}
               />
               <input 
                 type='name'
-                name='regNo.'
+                name='regno'
                 placeholder='Registration No.'
-                //onChange={handleChange}
+                onChange={handleChange}
                 autoFocus
-                //value={loginInfo.password}
+                value={loginInfo.password}
               />
               {/* <button type='submit'onClick={handleSubmit}>LogIn</button> */}
-              <button type='submit'>LogIn</button>
+              <button type='submit'onClick={handleSubmit}>LogIn</button>
               {/* <p>Not a member ?<Link to="/signup"> Sign up</Link> </p>
               <ToastContainer/> */}
           </div>
