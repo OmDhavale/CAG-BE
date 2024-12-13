@@ -191,11 +191,11 @@ const styles = {
       //   "url('https://images.playground.com/73dd83341e8b42b1a50844e1e70d55b1.jpeg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      display: "grid",
+      display: "flex",
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
-      backgroundColor: "#f9fbb1"
+      backgroundColor: "rgb(108, 174, 254)"
     },
   body: {
     

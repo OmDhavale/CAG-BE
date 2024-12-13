@@ -7,11 +7,19 @@ const cors = require('cors');
 const studentModel = require("./models/student.model")
 const teacherModel = require("./models/teacher.model")
 
+
 app.use(express.json())
 require('dotenv').config();
-app.use(cors());
-
-mongoose.connect("mongodb://localhost/cag_db") //cag_db = name of database
+const corsOptions = {
+    origin: 'http://localhost:3000',    ////for running locally
+  //origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
+//app.use(cors());
+mongoose.connect(process.env.MONGODB_URI)
+//mongoose.connect("mongodb://localhost/cag_db") //cag_db = name of database
 // ^ telling mongoose where to connect
 const db = mongoose.connection 
 db.on("error",()=>{
@@ -53,7 +61,8 @@ require("./routes/auth.route")(app)
 
 
 //Starting the server
-const PORT = 4444;
+//const PORT = 4444;
+const PORT = process.env.PORT
 app.listen(PORT,()=>{
     console.log("Server started on port: ",PORT)
 })

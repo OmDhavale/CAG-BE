@@ -34,7 +34,7 @@ const Adminlogin = () => {
       if(result.data.message==="Admin logged in succesful !"){ //give this message in json resp 
         toast.success("Login succesful !",{
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -43,7 +43,7 @@ const Adminlogin = () => {
         })
         setTimeout(() => {
             navigate('/create')
-          }, 5000);
+          }, 2000);
       }
     })
     .catch(err=>{
@@ -120,7 +120,7 @@ const styles = {
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
-      backgroundColor: "#f9fbb1"
+      backgroundColor: "rgb(108, 174, 254)"
     },
   body: {
     
