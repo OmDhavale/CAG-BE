@@ -27,7 +27,7 @@ const Adminlogin = () => {
     console.log(loginInfo)
     const email = loginInfo.email;
     const regno = loginInfo.regno;
-    axios.post('http://localhost:4444/adminlogin',{email,regno})
+    axios.post('https://class-at-a-glance.onrender.com/adminlogin',{email,regno})
     .then(result=>{
       console.log(result);
       

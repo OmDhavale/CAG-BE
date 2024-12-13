@@ -11,8 +11,8 @@ const teacherModel = require("./models/teacher.model")
 app.use(express.json())
 require('dotenv').config();
 const corsOptions = {
-    origin: 'http://localhost:3000',    ////for running locally
-  //origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
+    //origin: 'http://localhost:3000',    ////for running locally
+  origin: 'https://class-at-a-glance-fe.onrender.com', // Your frontend's URL for deployment
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'],
 };

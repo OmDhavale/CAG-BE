@@ -25,7 +25,7 @@ const Create = () => {
     console.log(addInfo)
     const email = addInfo.email;
     const regno = addInfo.regno;
-    axios.post('http://localhost:4444/adduser',{email,regno})
+    axios.post('https://class-at-a-glance.onrender.com/adduser',{email,regno})
     .then(result=>{
       console.log(result);
       
@@ -77,7 +77,7 @@ const Create = () => {
     const email = addInfoT.email;
     const regno = addInfoT.regno;
     const subject = addInfoT.subject;
-    axios.post('http://localhost:4444/addteacher',{email,regno,subject})
+    axios.post('https://class-at-a-glance.onrender.com/addteacher',{email,regno,subject})
     .then(result=>{
       console.log(result);
       

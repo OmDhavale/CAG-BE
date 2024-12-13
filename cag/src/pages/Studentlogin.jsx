@@ -25,7 +25,7 @@ const Studentlogin = () => {
     console.log(loginInfo)
     const email = loginInfo.email;
     const regno = loginInfo.regno;
-    axios.post('http://localhost:4444/studlogin',{email,regno})
+    axios.post('https://class-at-a-glance.onrender.com/studlogin',{email,regno})
     .then(result=>{
       console.log(result);
       
