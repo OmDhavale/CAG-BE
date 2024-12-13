@@ -1,6 +1,6 @@
 import React from 'react'
 import './Pages.css'
-
+import { Link } from 'react-router-dom';
 const Home = () => {
   return (
  <>
@@ -16,19 +16,19 @@ const Home = () => {
     </div>
     <div style={styles['.button-container']}>
     <button style={styles.button}>
-      < a href='studentlogin' style={styles.a}>
+      < Link to="/studentlogin" style={styles.a}>
         Login as Student
-      </a>
+      </Link>
     </button>
     <button style={styles.button}>
-      < a href='teacherlogin' style={styles.a}>
+      < Link to="/teacherlogin" style={styles.a}>
         Login as Teacher
-      </a>
+      </Link>
     </button>
     <button style={styles.button}>
-      < a href='adminlogin' style={styles.a}>
+      < Link to="/adminlogin" style={styles.a}>
         Login as Admin
-      </a>
+      </Link>
     </button>
     </div>
   </div>
